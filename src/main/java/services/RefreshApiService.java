@@ -18,7 +18,7 @@ public class RefreshApiService implements Service {
         };
 
         executor = Executors.newScheduledThreadPool(1);
-        executor.scheduleAtFixedRate(jobRunnable, 0, 10, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(jobRunnable, 0, 60, TimeUnit.SECONDS);
     }
 
     @Override

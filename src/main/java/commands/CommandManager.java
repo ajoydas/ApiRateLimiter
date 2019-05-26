@@ -25,6 +25,16 @@ public class CommandManager {
                 argsL.limit = Long.parseLong(commands[2]);
                 command = new LimiterCommand(argsL);
                 break;
+            case "LimitUsr":
+                if(commands.length !=4 ){
+                    throw new InvalidCommandException("Provide valid # of args");
+                }
+                LimitUserCommand.Args argsLU = new LimitUserCommand.Args();
+                argsLU.userName = commands[1];
+                argsLU.apiName = commands[2];
+                argsLU.limit = Long.parseLong(commands[3]);
+                command = new LimitUserCommand(argsLU);
+                break;
             case "Call":
                 if(commands.length !=2 ){
                     throw new InvalidCommandException("Provide valid # of args");
@@ -32,6 +42,16 @@ public class CommandManager {
                 CallCommand.Args argsCall = new CallCommand.Args();
                 argsCall.apiUrl = commands[1];
                 command = new CallCommand(argsCall);
+                break;
+            case "CallUser":
+                if(commands.length !=3 ){
+                    throw new InvalidCommandException("Provide valid # of args");
+                }
+                CallUserCommand.Args argsCallUser = new CallUserCommand.Args();
+                argsCallUser.apiName = commands[1];
+                argsCallUser.userName = commands[2];
+
+                command = new CallUserCommand(argsCallUser);
                 break;
             default:
                 throw new InvalidCommandException("Command not recognized.");
